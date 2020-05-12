@@ -1,0 +1,31 @@
+from tkinter import *
+import tkinter.messagebox as tmsg
+
+# WINDOW
+root = Tk()
+root.geometry("600x400")
+root.title("SLIDER")
+
+# FUNCTION
+def rate():
+    print(f" Your rating is {value1.get()}")
+    tmsg.showinfo("Done!", "Thanks for rating us.")
+    with open("rate.txt","a") as f:
+        f.write(f"{Entry1.get()}`s rating is {value1.get()}\n")
+
+# LABEL
+Label(root, text="How was your Experience? ", font="arial 20 bold").pack()
+Label(root, text="Enter your name ", font="arial 10 bold").pack()
+
+# ENTRY
+Entry1 = Entry(root)
+Entry1.pack()
+
+# SCALE
+value1 = Scale(root, from_=0, to=10, orient=HORIZONTAL)
+value1.pack()
+
+# BUTTON
+Button(root, text="Rate us!", pady=20, bg="green", font="arial 10 bold", fg="white", command=rate).pack()
+
+root.mainloop()
